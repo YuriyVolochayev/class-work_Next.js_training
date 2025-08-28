@@ -17,8 +17,8 @@ export type NoteListResponse = {
 
 axios.defaults.baseURL = "https://next-docs-api.onrender.com";
 
-export const getNotes = async () => {
-    const res = await axios.get<NoteListResponse>('/notes');
+export const getNotes = async (categoryId?: string) => {
+    const res = await axios.get<NoteListResponse>('/notes', {params: {categoryId},});
     return res.data;
 }
 
@@ -27,3 +27,19 @@ export const getSingleNote = async (id: string) => {
 
     return res.data;
 }
+
+export type Category = {
+  id: string;
+  name: string;
+  description: string;
+  createdAt: string;
+  updatedAt: string;
+};
+
+export const getCategories = async () => {
+    const res = await axios<Category[]>('/categories');
+    return res.data;
+};
+
+
+

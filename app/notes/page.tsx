@@ -29,6 +29,8 @@
 
 // app/notes/page.tsx
 
+'use client'
+
 import NoteList from "@/components/NoteList/NoteList";
 import { getNotes } from "@/lib/api";
 
